@@ -10,7 +10,6 @@ This script was made to quickly change material types based on analytics filters
 <li>Portfolio's with the bib material type as journal and portfolio material type as unknown, unknown is changed to journal</li>
 <li>Portfolio's with the bib material type as music and portfolio material type as unknown, unknown is changed to streaming audio</li>
 </ul>
-Two test reports are also included.</br>
 </br>
 A main project runs setting the analytics paths and desired material type, those and a report name is sent to a function to change the material type.
 In the change material type function , the reports are retrieved by their from analytics in XML format. Each column from the report that needs to be added to a list it sent to another function with the XML root to parse the XML tree for that element and send it back as a list. If no elements were added to the list no further processing takes place and the analytics XML is saved to a file. If the lists contain elements a data frame is made from the lists. A JSON data object is created including the desired material type values passed from the main function. The columns of the dataframe are then added to arrays/lists. Each list/array is iterated over by a loop to create the link to send a put request to the Alma API. Error messages are added to the dataframe as a new column called 'Notes'. The updated dataframe is than saved as a new csv file.</br>
